@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Autochek</string>
+    <string name="explore">Explore</string>
+    <string name="product">Product</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="total_amount">Total: %s</string>
+    <string name="search_hint">Search</string>
+
+</resources>

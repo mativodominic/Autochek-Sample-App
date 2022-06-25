@@ -1,0 +1,101 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+    id 'com.android.application' version '7.2.1' apply false
+    id 'com.android.library' version '7.2.1' apply false
+    id 'org.jetbrains.kotlin.android' version '1.7.0' apply false
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    majorVersion = 1
+    minorVersion = 0
+    patchVersion = 0
+
+    appVersion = "$majorVersion.$minorVersion.$patchVersion"
+    appVersionCode = majorVersion * 1000000 + minorVersion * 1000 + patchVersion
+
+    compileSdkVersion = 31
+    minSdkVersion = 21
+    targetSdkVersion = 31
+
+    /* Dependencies */
+    materialishProgressVersion          = '1.7'
+    appcompatVersion                    = '1.4.2'
+    constraintVersion                   = '2.1.4'
+    recyclerviewVersion                 = '1.2.1'
+    materialVersion                     = '1.7.0-alpha02'
+    viewPager2Version                   = '1.0.0'
+
+    jodaTimeVersion                     = '2.10.13'
+    roomVersion                         = '2.4.2'
+    koinVersion                         = '2.1.6'
+    workVersion                         = '2.7.1'
+    coroutinesVersion                   = '1.6.0-native-mt'
+    coroutinesTestVersion               = '1.6.0-native-mt'
+
+    lifecycleExtensionVersion           = '2.2.0'
+    lifecycleVersion                    = '2.4.1'
+    coreKtxVersion                      = '1.8.0'
+    reflectVersion                      = '1.6.10'
+
+    okhttpVersion                       = '5.0.0-alpha.2'
+    retrofitVersion                     = '2.9.0'
+    retrofitConverterVersion            = '2.9.0'
+    retrofitAdapterVersion              = '2.9.0'
+
+    activityKtxVersion                  = '1.4.0'
+    fragmentKtxVersion                  = '1.4.1'
+
+    lifecycleExtensionVersion           = '2.2.0'
+    lifecycleVersion                    = '2.4.1'
+    coreKtxVersion                      = '1.6.0'
+    reflectVersion                      = '1.6.10'
+
+    picassoVersion                      = '2.71828'
+    timberVersion                       = '5.0.1'
+
+    // Core Support Library
+    appcompat           = "androidx.appcompat:appcompat:$appcompatVersion"
+    material            = "com.google.android.material:material:$materialVersion"
+    constraint          = "androidx.constraintlayout:constraintlayout:$constraintVersion"
+    recyclerview        = "androidx.recyclerview:recyclerview:$recyclerviewVersion"
+    core_ktx            = "androidx.core:core-ktx:$coreKtxVersion"
+    viewPager2          = "androidx.viewpager2:viewpager2:$viewPager2Version"
+    activityKtx         = "androidx.activity:activity-ktx:$activityKtxVersion"
+    fragmentKtx         = "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
+    reflect             = "org.jetbrains.kotlin:kotlin-reflect:$reflectVersion"
+
+    room            = "androidx.room:room-runtime:$roomVersion"
+    roomCompiler    = "androidx.room:room-compiler:$roomVersion"
+    roomKotlin      = "androidx.room:room-ktx:$roomVersion"
+
+    // Dependency Injection
+    koinLifecycle   = "org.koin:koin-androidx-scope:$koinVersion"
+    koinViewModel   = "org.koin:koin-androidx-viewmodel:$koinVersion"
+
+    // Kotlin Coroutines
+    coroutinesCore      = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+    coroutinesAndroid   = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+    coroutinesTest      = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTestVersion"
+
+    // Lifecycles
+    lifecycleExtensions =  "androidx.lifecycle:lifecycle-extensions:$lifecycleExtensionVersion"
+    lifecycleCommon     = "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+    lifecycleViewModel  = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    lifecycleLiveData   = "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+
+    // Network
+    okhttpInterceptor           = "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+    squareRetrofitConverter     = "com.squareup.retrofit2:converter-gson:$retrofitConverterVersion"
+    squareRetrofitRxAdapter     = "com.squareup.retrofit2:adapter-rxjava2:$retrofitAdapterVersion"
+    squareRetrofit              = "com.squareup.retrofit2:retrofit:$retrofitVersion"
+
+    // Progress & Imaging & Log
+    picasso             = "com.squareup.picasso:picasso:$picassoVersion"
+    materialProgress    = "com.pnikosis:materialish-progress:$materialishProgressVersion"
+    timber              = "com.jakewharton.timber:timber:4.7.1"
+
+}

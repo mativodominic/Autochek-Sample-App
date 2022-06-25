@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color  name="auto_primary">#FAFAFA</color>
+    <color  name="uweal_primary_dark">#FAFAFA</color>
+    <color  name="auto_secondary_variant">#021D4B</color>
+    <color  name="auto_secondary">#0D1328</color>
+    <color  name="auto_on_secondary">#FFCB66</color>
+    <color  name="uweal_on_primary">#0D1328</color>
+    <color name="auto_surface_color">#FAFAFA</color>
+    <color name="auto_on_surface">#0D1328</color>
+    <color name="auto_error_color">#EE3124</color>
+    <color name="auto_card_bg">#9999D0</color>
+    <color name="auto_primary_surface">#809B9BD1</color>
+
+</resources>
