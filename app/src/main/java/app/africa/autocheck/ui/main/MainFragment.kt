@@ -3,9 +3,11 @@ package app.africa.autocheck.ui.main
 import android.os.Bundle
 import android.view.View
 import app.africa.autocheck.R
+import app.africa.autocheck.core.data.cars.Car
 import app.africa.autocheck.core.framework.ui.BaseFragment
 import app.africa.autocheck.core.framework.ui.viewBinding
 import app.africa.autocheck.databinding.ContentMainBinding
+import app.africa.autocheck.ui.car_details.CarDetailsFragment
 import app.africa.autocheck.ui.home.HomeFragment
 
 class MainFragment : BaseFragment(R.layout.content_main) {
@@ -59,6 +61,10 @@ class MainFragment : BaseFragment(R.layout.content_main) {
             is HomeFragment -> {}
             else -> openHome()
         }
+    }
+
+    fun openCarDetails(car: Car) {
+        replaceFragment(CarDetailsFragment.getInstance(car), R.id.contentMainContainer, true)
     }
 
 }

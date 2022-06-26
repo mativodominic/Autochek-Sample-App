@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:liftOnScroll="true">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="16dp"
+            android:paddingStart="0dp"
+            app:menu="@menu/cart_menu"
+            app:navigationIcon="@drawable/ic_toolbar_back"
+            app:title="@string/product" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:indicatorColor="?attr/colorOnSecondary"
+        android:indeterminate="true"
+        app:indicatorDirectionLinear="startToEnd"
+        app:trackColor="@color/auto_card_bg"
+        app:trackThickness="2dp"
+        />
+
+    <TextView
+        android:id="@+id/carTitle"
+        style="@style/label.title.3"
+        tools:text="Mercedes-Benz ML 400"
+        android:textColor="@color/auto_on_surface"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="16dp"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constraintTop_toBottomOf="@+id/carTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        >
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/carImage"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:background="@color/featured_car_bg"
+            android:padding="0dp"
+            tools:src="@mipmap/toyota"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.8"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.App.FeaturedCarsImage"
+            app:strokeColor="@color/white"
+            android:elevation="1dp"
+            app:strokeWidth="3dp" />
+
+        <ImageView
+            android:id="@+id/favouriteIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:srcCompat="@drawable/favourite_normal"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="@+id/carImage"
+            app:layout_constraintTop_toTopOf="@+id/carImage"
+            android:elevation="1.5dp"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/imageBtGuide"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.25"
+            app:layout_constraintBottom_toBottomOf="@+id/carImage"
+            app:layout_constraintTop_toTopOf="@+id/carImage"
+            />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/carSummaryContainer"
+            android:layout_width="0dp"
+            android:layout_height="270dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageBtGuide"
+            app:layout_constraintWidth_percent="0.9">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/contentsTpGuide"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.42"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/carMediaList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/list_car_media"
+                    app:layout_constraintTop_toBottomOf="@+id/contentsTpGuide"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    />
+
+                <TextView
+                    android:id="@+id/yearOfManufacture"
+                    style="@style/label.body.12"
+                    tools:text="2016"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    app:layout_constraintTop_toBottomOf="@+id/carMediaList"
+                    app:layout_constraintStart_toStartOf="@+id/costOfCar"
+                    android:drawablePadding="4dp"
+                    app:drawableStartCompat="@drawable/ic_date"
+                    app:drawableTint="@color/auto_card_bg" />
+
+                <TextView
+                    android:id="@+id/mileage"
+                    style="@style/label.body.12"
+                    tools:text="337,437"
+                    android:layout_marginStart="24dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    app:layout_constraintTop_toTopOf="@+id/yearOfManufacture"
+                    app:layout_constraintStart_toEndOf="@+id/yearOfManufacture"
+                    android:drawablePadding="4dp"
+                    app:drawableStartCompat="@drawable/ic_mileage_16"
+                    app:drawableTint="@color/auto_card_bg" />
+
+                <TextView
+                    android:id="@+id/location"
+                    style="@style/label.body.12"
+                    android:layout_width="wrap_content"
+                    tools:text="Mombasa"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    app:layout_constraintTop_toBottomOf="@+id/yearOfManufacture"
+                    app:layout_constraintStart_toStartOf="@+id/yearOfManufacture"
+                    android:drawablePadding="4dp"
+                    app:drawableStartCompat="@drawable/ic_location"
+                    app:drawableTint="@color/auto_card_bg" />
+
+                <TextView
+                    android:id="@+id/costOfCar"
+                    style="@style/label.body.14"
+                    tools:text="$115"
+                    app:layout_constraintTop_toBottomOf="@+id/location"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="36dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+
+                <!--Rating-->
+                <ImageView
+                    android:id="@+id/ratingIcon"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    app:srcCompat="@drawable/ic_rating"
+                    android:layout_marginEnd="2dp"
+                    app:layout_constraintEnd_toStartOf="@+id/ratingLevel"
+                    app:layout_constraintTop_toTopOf="@+id/yearOfManufacture"
+                    />
+
+                <TextView
+                    android:id="@+id/ratingLevel"
+                    style="@style/label.body.12"
+                    tools:text="(3.5)"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/auto_secondary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/ratingIcon"
+                    app:layout_constraintTop_toTopOf="@+id/ratingIcon" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/carSummaryContainer"
+            app:layout_constraintStart_toStartOf="@+id/carSummaryContainer"
+            app:layout_constraintTop_toBottomOf="@+id/carSummaryContainer">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

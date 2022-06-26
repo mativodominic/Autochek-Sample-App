@@ -6,10 +6,12 @@ import android.view.MenuInflater
 import android.view.View
 import android.widget.TextView
 import app.africa.autocheck.R
+import app.africa.autocheck.core.framework.data.AutoReloadState
 import app.africa.autocheck.core.framework.data.AutoState
 import app.africa.autocheck.core.framework.ui.BaseMvpFragment
 import app.africa.autocheck.core.framework.ui.viewBinding
 import app.africa.autocheck.databinding.HomeFragmentBinding
+import app.africa.autocheck.ui.main.MainFragment
 
 class HomeFragment : BaseMvpFragment<HomeViewModel>(R.layout.home_fragment) {
 
@@ -76,6 +78,17 @@ class HomeFragment : BaseMvpFragment<HomeViewModel>(R.layout.home_fragment) {
                 }
                 else -> {}
             }
+        }
+
+        viewModel.reloadState.observe(this) {
+            if (it is AutoReloadState.Success) {
+                carsAdapter.notifyItemChanged(it.position)
+            }
+        }
+
+        viewModel.viewDetailsState.observe(this) {
+            val parent = parentFragment as MainFragment
+            parent.openCarDetails(it)
         }
     }
 

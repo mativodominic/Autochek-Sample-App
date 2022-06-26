@@ -20,14 +20,17 @@
         <entry key="app/src/main/res/drawable/ic_location.xml" value="0.23" />
         <entry key="app/src/main/res/drawable/ic_menu_fav.xml" value="0.2285" />
         <entry key="app/src/main/res/drawable/ic_placeholder.xml" value="0.2285" />
+        <entry key="app/src/main/res/drawable/ic_play.xml" value="0.2275" />
         <entry key="app/src/main/res/drawable/ic_rating.xml" value="0.311" />
         <entry key="app/src/main/res/drawable/ic_round_home.xml" value="0.1885" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.2285" />
         <entry key="app/src/main/res/drawable/ic_toolbar_back.xml" value="0.23" />
         <entry key="app/src/main/res/font/montserrat_medium.xml" value="0.3851282051282051" />
+        <entry key="app/src/main/res/layout/cars_details_fragment.xml" value="0.28203125" />
         <entry key="app/src/main/res/layout/cart_layout.xml" value="0.3609375" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.269921875" />
         <entry key="app/src/main/res/layout/home_fragment.xml" value="0.24930555555555556" />
+        <entry key="app/src/main/res/layout/list_car_media.xml" value="0.193359375" />
         <entry key="app/src/main/res/layout/list_popular_cars.xml" value="0.270703125" />
         <entry key="app/src/main/res/layout/list_popular_makes.xml" value="0.35989583333333336" />
         <entry key="app/src/main/res/layout/main_fragment.xml" value="0.270703125" />

@@ -5,7 +5,7 @@ import app.africa.autocheck.core.framework.koin.*
 import coil.ImageLoader
 import coil.ImageLoaderFactory
 import coil.decode.SvgDecoder
-import com.squareup.picasso.Picasso
+import coil.decode.VideoFrameDecoder
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidFileProperties
 import org.koin.core.context.startKoin
@@ -30,7 +30,6 @@ class App : Application() , ImageLoaderFactory {
 
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
-            Picasso.get().isLoggingEnabled = true
         }
 
     }
@@ -40,6 +39,7 @@ class App : Application() , ImageLoaderFactory {
             .crossfade(true)
             .components {
                 add(SvgDecoder.Factory())
+                add(VideoFrameDecoder.Factory())
             }
             .build()
     }

@@ -10,5 +10,6 @@
     <string name="menu_home">Home</string>
     <string name="menu_fav">Favourite</string>
     <string name="error_loading_popular_makes">Sorry, something happened while loading data!</string>
+    <string name="error_loading_car_media">Sorry, something happened while loading car media!</string>
 
 </resources>

@@ -83,7 +83,9 @@ dependencies {
 
     // Progress & Imaging & Log
     implementation coil_svg
+    implementation coil_video
     implementation coil
+    implementation pallete
     implementation materialProgress
     implementation timber
 

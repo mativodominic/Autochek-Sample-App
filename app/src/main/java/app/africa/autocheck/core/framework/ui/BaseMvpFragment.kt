@@ -12,6 +12,10 @@ import timber.log.Timber
 abstract class BaseMvpFragment<T : BaseViewModel>(@LayoutRes rootLayoutId: Int) :
     Fragment(rootLayoutId) {
 
+    companion object {
+        const val EXTRA_MODEL = "extra.model"
+    }
+
     protected abstract val viewModelClass: Class<T>
     private var vProgress: View? = null
     protected open val viewModel: T by lazy(LazyThreadSafetyMode.NONE) {

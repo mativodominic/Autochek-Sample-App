@@ -92,6 +92,12 @@
         <item name="cornerSize">10%</item>
     </style>
 
+    <style name="ShapeAppearance.App.25"
+        parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">25%</item>
+    </style>
+
     <style name="Widget.MyApp.MaterialButton" parent="Widget.MaterialComponents.Button">
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MyApp.MaterialButton
         </item>
@@ -170,7 +176,6 @@
         <item name="fontFamily">@font/montserrat_medium</item>
         <item name="android:fontFamily">@font/montserrat_medium</item>
     </style>
-
 
     <style name="label">
         <item name="android:layout_width">wrap_content</item>

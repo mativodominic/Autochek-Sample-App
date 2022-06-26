@@ -4,6 +4,7 @@ import androidx.lifecycle.viewModelScope
 import app.africa.autocheck.core.data.cars.Car
 import app.africa.autocheck.core.data.popular.PopularMake
 import app.africa.autocheck.core.framework.CustomLiveData
+import app.africa.autocheck.core.framework.data.AutoReloadState
 import app.africa.autocheck.core.framework.data.AutoState
 import app.africa.autocheck.core.framework.remote.Pagination
 import app.africa.autocheck.core.framework.retrofit.ApiResponse
@@ -22,11 +23,8 @@ class HomeViewModel: BaseViewModel(), HomeContract.ViewModel {
     val loadMakesState = CustomLiveData<AutoState>()
     val loadMoreCarsState = CustomLiveData<AutoState>()
     val loadCarsState = CustomLiveData<AutoState>()
-
-    /*init {
-        loadPopularMakes()
-        loadCars()
-    }*/
+    val reloadState = CustomLiveData<AutoReloadState<Boolean>>()
+    val viewDetailsState = CustomLiveData<Car>()
 
     fun loadPopularMakes() {
         loadMakesState.postValue(AutoState.Loading)
@@ -105,8 +103,16 @@ class HomeViewModel: BaseViewModel(), HomeContract.ViewModel {
         holder.onBind(cars[position])
     }
 
-    override fun onCarSelected(position: Int) {}
+    override fun onCarSelected(position: Int) {
+        viewDetailsState.postValue(cars[position])
+    }
 
-    override fun onFavouriteCar(position: Int) {}
+    override fun onFavouriteCar(position: Int) {
+        val car = cars[position]
+        car.isFavourite = !car.isFavourite
+
+        cars[position] = car
+        reloadState.postValue(AutoReloadState.Success(body = true, position))
+    }
 
 }

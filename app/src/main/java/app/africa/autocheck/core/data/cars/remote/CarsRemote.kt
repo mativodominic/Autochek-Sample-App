@@ -40,7 +40,9 @@ class CarsRemote : BaseRemoteSource<CarsService>(), CarsRemoteSource {
 
     override suspend fun fetchCarMedia(carId: String):
             GenericResponse<BaseApiMediaResponse<CarMedia>> = coroutineScope {
-        return@coroutineScope build().service!!.fetchCarMedia(carId)
+        val options = mutableMapOf<String, String>()
+        options["carId"] = carId
+        return@coroutineScope build().service!!.fetchCarMedia(options)
     }
 
 }

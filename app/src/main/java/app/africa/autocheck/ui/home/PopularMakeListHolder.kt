@@ -5,7 +5,6 @@ import app.africa.autocheck.R
 import app.africa.autocheck.core.data.popular.PopularMake
 import app.africa.autocheck.databinding.ListPopularMakesBinding
 import coil.load
-import com.squareup.picasso.Picasso
 
 class PopularMakeListHolder(
     private val binding: ListPopularMakesBinding,

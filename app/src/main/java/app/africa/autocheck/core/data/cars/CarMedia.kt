@@ -7,4 +7,8 @@ data class CarMedia(
     val name: String,
     val url: String,
     val type: String?
-) : Serializable
+) : Serializable {
+
+    fun isVideo() = type?.startsWith("video") ?: false
+
+}

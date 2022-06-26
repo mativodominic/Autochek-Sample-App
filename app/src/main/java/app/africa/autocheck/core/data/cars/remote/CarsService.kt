@@ -20,8 +20,8 @@ interface CarsService {
     suspend fun fetchCarDetails(@Path("carId") carId: String) :
             GenericResponse<CarDetails>
 
-    @GET("inventory/car_media/{carId}")
-    suspend fun fetchCarMedia(@Path("carId") carId: String) :
+    @GET("inventory/car_media")
+    suspend fun fetchCarMedia(@QueryMap options: Map<String, String>) :
             GenericResponse<BaseApiMediaResponse<CarMedia>>
 
 }
