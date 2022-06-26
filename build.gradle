@@ -99,6 +99,5 @@ ext {
     picasso             = "com.squareup.picasso:picasso:$picassoVersion"
     materialProgress    = "com.pnikosis:materialish-progress:$materialishProgressVersion"
     timber              = "com.jakewharton.timber:timber:4.7.1"
-    sharp               = "com.pixplicity.sharp:library:1.1.0"
 
 }

@@ -1,5 +1,6 @@
 package app.africa.autocheck.ui.home
 
+import android.app.Activity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -12,9 +13,7 @@ class PopularMakeListAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularMakeListHolder {
         return PopularMakeListHolder(
-            ListPopularMakesBinding.inflate(inflater, parent, false),
-            viewModel
-        )
+            ListPopularMakesBinding.inflate(inflater, parent, false), viewModel)
     }
 
     override fun onBindViewHolder(holder: PopularMakeListHolder, position: Int) {
