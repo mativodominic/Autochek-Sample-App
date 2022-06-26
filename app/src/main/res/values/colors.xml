@@ -4,15 +4,17 @@
     <color name="white">#FFFFFFFF</color>
 
     <color  name="auto_primary">#FAFAFA</color>
-    <color  name="uweal_primary_dark">#FAFAFA</color>
+    <color  name="auto_primary_dark">#FAFAFA</color>
     <color  name="auto_secondary_variant">#021D4B</color>
-    <color  name="auto_secondary">#0D1328</color>
-    <color  name="auto_on_secondary">#FFCB66</color>
-    <color  name="uweal_on_primary">#0D1328</color>
+    <color  name="auto_secondary">#0F1327</color>
+    <color  name="auto_on_secondary">#FFCC66</color>
+    <color  name="uweal_on_primary">#0F1327</color>
     <color name="auto_surface_color">#FAFAFA</color>
-    <color name="auto_on_surface">#0D1328</color>
+    <color name="auto_on_surface">#0F1327</color>
     <color name="auto_error_color">#EE3124</color>
-    <color name="auto_card_bg">#9999D0</color>
-    <color name="auto_primary_surface">#809B9BD1</color>
+    <color name="auto_card_bg">#989ACF</color>
+    <color name="auto_primary_surface">#80989ACF</color>
+    <color name="featured_car_bg">#409799CF</color>
+    <color name="bg_makes">#F5F5F5</color>
 
 </resources>

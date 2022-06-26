@@ -1,5 +1,11 @@
 package app.africa.autocheck.core.framework.koin
 
+import app.africa.autocheck.core.data.cars.remote.CarsRemote
+import app.africa.autocheck.core.data.cars.remote.CarsRemoteSource
+import app.africa.autocheck.core.data.popular.remote.PopularMakesRemote
+import app.africa.autocheck.core.data.popular.remote.PopularMakesRemoteSource
+import app.africa.autocheck.core.data.popular.repo.AutoRepository
+import app.africa.autocheck.core.data.popular.repo.AutoRepositorySource
 import org.koin.dsl.module
 
 val rootModule = module {
@@ -7,11 +13,12 @@ val rootModule = module {
 }
 
 val repositoryModule = module {
-    //single<UserRepositorySource> { UserRepository() }
+    single<AutoRepositorySource> { AutoRepository() }
 }
 
 val remoteModule = module {
-    //single<OauthTokenRemoteSource> { OauthTokenRemote() }
+    single<CarsRemoteSource> {CarsRemote()}
+    single<PopularMakesRemoteSource> {PopularMakesRemote()}
 }
 
 val localModule = module {

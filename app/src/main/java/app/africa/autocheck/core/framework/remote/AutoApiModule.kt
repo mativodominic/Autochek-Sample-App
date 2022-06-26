@@ -3,6 +3,7 @@ package app.africa.autocheck.core.framework.remote
 import app.africa.autocheck.BuildConfig
 import app.africa.autocheck.core.framework.retrofit.ApiResponseAdapterFactory
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -24,8 +25,11 @@ interface AutoApiComponent {
 object AutoApiModule : AutoApiComponent {
 
     override fun <T> createService(serviceClass: Class<T>): T {
+        val loggingInterceptor =
+            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
         val clientBuilder = OkHttpClient.Builder()
+            .addNetworkInterceptor(loggingInterceptor)
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .writeTimeout(30, TimeUnit.SECONDS)

@@ -13,7 +13,7 @@ abstract class BaseMvpActivity : AppCompatActivity() {
      * @param containerId [Int] The Container View ID.
      * @param needToAddToBackStack Boolean If we should add the fragment to the back-stack.
      */
-    protected open fun replaceFragment(containerId: Int, fragment: Fragment, needToAddToBackStack: Boolean = true) {
+    protected open fun replaceFragment(containerId: Int = android.R.id.content, fragment: Fragment, needToAddToBackStack: Boolean = true) {
         val name = fragment.javaClass.simpleName
         with(supportFragmentManager.beginTransaction()) {
             replace(containerId, fragment, name)

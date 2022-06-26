@@ -83,6 +83,7 @@ dependencies {
 
     // Progress & Imaging & Log
     implementation picasso
+    implementation "com.github.corouteam:GlideToVectorYou:v2.0.0"
     implementation materialProgress
     implementation timber
 

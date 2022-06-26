@@ -15,6 +15,7 @@ data class CarDetails(
     val state: String?,
     val country: String?,
     val ownerType: String?,
+    val gradeScore: Double?,
 
     val hasWarranty: Boolean,
     val marketplacePrice: Int,

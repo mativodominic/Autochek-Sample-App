@@ -9,6 +9,7 @@ data class Car(
     val year: Int,
     val city: String?,
     val state: String?,
+    val gradeScore: Double?,
     val hasWarranty: Boolean,
     val marketplacePrice: Int,
     val marketplaceOldPrice: Int,
@@ -17,9 +18,11 @@ data class Car(
     val mileageUnit: String?,
     val installment: Int,
     val depositReceived: Boolean,
-    val loanValue: Int,
+    val loanValue: Double,
     val websiteUrl: String?,
     val bodyTypeId: Int,
     val sold: Boolean,
     val transmission: String?
-) : Serializable
+) : Serializable {
+    var isFavourite: Boolean = false
+}

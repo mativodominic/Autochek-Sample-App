@@ -3,8 +3,36 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/bg_cart.xml" value="0.2285" />
+        <entry key="app/src/main/res/drawable/bg_seach_input.xml" value="0.23" />
+        <entry key="app/src/main/res/drawable/bg_search_filter.xml" value="0.23" />
+        <entry key="app/src/main/res/drawable/cart_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/favourite_active.xml" value="0.23" />
+        <entry key="app/src/main/res/drawable/favourite_normal.xml" value="0.311" />
+        <entry key="app/src/main/res/drawable/home_menu.xml" value="0.23" />
+        <entry key="app/src/main/res/drawable/ic_add.xml" value="0.23" />
+        <entry key="app/src/main/res/drawable/ic_add_16.xml" value="0.2285" />
+        <entry key="app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.23" />
+        <entry key="app/src/main/res/drawable/ic_cart.xml" value="0.23" />
+        <entry key="app/src/main/res/drawable/ic_date.xml" value="0.311" />
+        <entry key="app/src/main/res/drawable/ic_filter.xml" value="0.2285" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/main_fragment.xml" value="0.3609375" />
+        <entry key="app/src/main/res/drawable/ic_location.xml" value="0.23" />
+        <entry key="app/src/main/res/drawable/ic_menu_fav.xml" value="0.2285" />
+        <entry key="app/src/main/res/drawable/ic_rating.xml" value="0.311" />
+        <entry key="app/src/main/res/drawable/ic_round_home.xml" value="0.1885" />
+        <entry key="app/src/main/res/drawable/ic_search.xml" value="0.2285" />
+        <entry key="app/src/main/res/drawable/ic_toolbar_back.xml" value="0.23" />
+        <entry key="app/src/main/res/font/montserrat_medium.xml" value="0.3851282051282051" />
+        <entry key="app/src/main/res/layout/cart_layout.xml" value="0.3609375" />
+        <entry key="app/src/main/res/layout/content_main.xml" value="0.269921875" />
+        <entry key="app/src/main/res/layout/home_fragment.xml" value="0.24930555555555556" />
+        <entry key="app/src/main/res/layout/list_popular_cars.xml" value="0.270703125" />
+        <entry key="app/src/main/res/layout/list_popular_makes.xml" value="0.35989583333333336" />
+        <entry key="app/src/main/res/layout/main_fragment.xml" value="0.270703125" />
+        <entry key="app/src/main/res/layout/search_snippet.xml" value="0.5" />
+        <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.270703125" />
+        <entry key="app/src/main/res/menu/cart_menu.xml" value="0.3609375" />
       </map>
     </option>
   </component>

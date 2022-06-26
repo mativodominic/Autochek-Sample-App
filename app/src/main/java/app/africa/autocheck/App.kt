@@ -29,6 +29,7 @@ class App : Application() {
             Timber.plant(Timber.DebugTree())
             Picasso.get().isLoggingEnabled = true
         }
+
     }
 
 }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="16dp">
+
+    <!-- Image of the Make-->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/makeImage"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@color/bg_makes"
+        android:padding="3dp"
+        tools:src="@mipmap/toyota"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.App.CircleImage"
+        app:strokeColor="@color/bg_makes"
+        app:strokeWidth="4dp"
+        tools:ignore="@drawable/ic_avatar" />
+
+    <com.pnikosis.materialishprogress.ProgressWheel
+        android:id="@+id/makeImageProgressView"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/makeImage"
+        app:layout_constraintEnd_toEndOf="@+id/makeImage"
+        app:layout_constraintStart_toStartOf="@+id/makeImage"
+        app:layout_constraintTop_toTopOf="@+id/makeImage"
+        app:matProg_barColor="?attr/colorOnSecondary"
+        app:matProg_barWidth="2dp"
+        app:matProg_circleRadius="50dp"
+        app:matProg_progressIndeterminate="true" />
+
+    <!-- Name of the make-->
+    <TextView
+        android:id="@+id/nameOfMake"
+        style="@style/label.body.14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/makeImage"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_medium"
+        tools:text="Jaguar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
