@@ -25,6 +25,10 @@ android {
     }
 
     buildTypes {
+        all {
+            def apiBaseUrl = "https://api.staging.myautochek.com/v1/"
+            buildConfigField "String", "BaseApi", "\"" + apiBaseUrl.toString() + "\""
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -55,16 +59,15 @@ dependencies {
     implementation reflect
 
     // Dependency Injection & Room
-    implementation  room
-    kapt roomCompiler
-    implementation roomKotlin
-    implementation koinLifecycle
-    implementation koinViewModel
+    implementation      room
+    kapt                roomCompiler
+    implementation      roomKotlin
+    implementation      koin
 
     // Kotlin Coroutines
-    implementation coroutinesCore
-    implementation coroutinesAndroid
-    testImplementation coroutinesTest
+    implementation      coroutinesCore
+    implementation      coroutinesAndroid
+    testImplementation  coroutinesTest
 
     // Lifecycles
     implementation lifecycleLiveData
