@@ -82,8 +82,8 @@ dependencies {
     implementation squareRetrofit
 
     // Progress & Imaging & Log
-    implementation picasso
-    implementation "com.github.corouteam:GlideToVectorYou:v2.0.0"
+    implementation coil_svg
+    implementation coil
     implementation materialProgress
     implementation timber
 

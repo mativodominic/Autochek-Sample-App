@@ -9,7 +9,7 @@ data class Car(
     val year: Int,
     val city: String?,
     val state: String?,
-    val gradeScore: Double?,
+    val gradeScore: Double = 0.0,
     val hasWarranty: Boolean,
     val marketplacePrice: Int,
     val marketplaceOldPrice: Int,

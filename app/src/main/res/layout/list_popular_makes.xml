@@ -11,7 +11,6 @@
         android:id="@+id/makeImage"
         android:layout_width="72dp"
         android:layout_height="72dp"
-        android:background="@color/bg_makes"
         android:padding="3dp"
         tools:src="@mipmap/toyota"
         android:scaleType="centerInside"
