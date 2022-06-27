@@ -15,6 +15,7 @@ import app.africa.autocheck.core.framework.ui.viewBinding
 import app.africa.autocheck.core.framework.utils.format
 import app.africa.autocheck.core.framework.utils.formatAmount
 import app.africa.autocheck.databinding.CarDetailsFragmentBinding
+import app.africa.autocheck.ui.main.MainFragment
 import coil.load
 
 class CarDetailsFragment : BaseMvpFragment<CarDetailsViewModel>(R.layout.car_details_fragment) {
@@ -111,7 +112,8 @@ class CarDetailsFragment : BaseMvpFragment<CarDetailsViewModel>(R.layout.car_det
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.toolbar.setNavigationOnClickListener {
-            onMoveBack()
+            val parent = parentFragment as MainFragment
+            parent.onMoveBack()
         }
 
         showSummary()
@@ -119,7 +121,11 @@ class CarDetailsFragment : BaseMvpFragment<CarDetailsViewModel>(R.layout.car_det
 
     private fun showSummary() {
         binding.carTitle.text = carModel.title
-        binding.location.text = carModel.city
+
+        if (carModel.city.isNullOrEmpty()) {
+            binding.location.visibility = View.GONE
+        }
+        else binding.location.text = carModel.city
 
         binding.carImage.load(carModel.imageUrl) {
             crossfade(true)
@@ -140,10 +146,12 @@ class CarDetailsFragment : BaseMvpFragment<CarDetailsViewModel>(R.layout.car_det
             )
         }
 
-        binding.favouriteIcon.setImageResource(
-            if (carModel.isFavourite) R.drawable.favourite_active
-            else R.drawable.favourite_normal
-        )
+        setIsFavourite()
+
+        binding.favouriteIcon.setOnClickListener {
+            viewModel.car.isFavourite = !viewModel.car.isFavourite
+            setIsFavourite()
+        }
 
         binding.yearOfManufacture.text = carModel.year.toString()
 
@@ -156,6 +164,13 @@ class CarDetailsFragment : BaseMvpFragment<CarDetailsViewModel>(R.layout.car_det
         val rating = "(${ carModel.gradeScore.formatAmount() })"
         binding.ratingLevel.text = rating
 
+    }
+
+    private fun setIsFavourite() {
+        binding.favouriteIcon.setImageResource(
+            if (carModel.isFavourite) R.drawable.favourite_active
+            else R.drawable.favourite_normal
+        )
     }
 
     override fun progressBarView(): View? = binding.progressBar

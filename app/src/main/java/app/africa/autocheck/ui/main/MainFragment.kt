@@ -63,6 +63,17 @@ class MainFragment : BaseFragment(R.layout.content_main) {
         }
     }
 
+    fun isPrimaryMenus(): Boolean {
+        return when (childFragmentManager.findFragmentById(R.id.contentMainContainer)) {
+            is HomeFragment -> true
+            else -> false
+        }
+    }
+
+    fun onBottomNavHome() {
+        binding.bottomNavigation.selectedItemId = R.id.actionHome
+    }
+
     fun openCarDetails(car: Car) {
         replaceFragment(CarDetailsFragment.getInstance(car), R.id.contentMainContainer, true)
     }

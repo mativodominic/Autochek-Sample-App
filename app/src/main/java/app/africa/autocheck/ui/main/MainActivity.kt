@@ -19,5 +19,8 @@ class MainActivity : BaseMvpActivity() {
         replaceFragment(fragment = MainFragment.getInstance(), needToAddToBackStack = false)
     }
 
+    override fun onBackPressed() {
+        mainFragmentHasBackStock()
+    }
 
 }
