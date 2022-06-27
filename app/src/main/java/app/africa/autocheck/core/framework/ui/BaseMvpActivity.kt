@@ -62,17 +62,11 @@ abstract class BaseMvpActivity : AppCompatActivity() {
         val mainFragment = supportFragmentManager.findFragmentById(android.R.id.content)
         if (mainFragment is MainFragment) {
             val mainHasStack = mainFragment.hasBackStack()
-            val mainStackSize = mainFragment.childFragmentManager.backStackEntryCount
 
             if (mainHasStack) {
                 mainFragment.childFragmentManager.popBackStack()
             } else {
-                val isPrimaryMenu = mainFragment.isPrimaryMenus()
-
-                if (isPrimaryMenu) {
-                    mainFragment.onBottomNavHome()
-                }
-                else finish()
+                finish()
             }
         } else finish()
     }
