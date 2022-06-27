@@ -59,6 +59,7 @@ class MainFragment : BaseFragment(R.layout.content_main) {
 
         when (childFragmentManager.findFragmentById(R.id.contentMainContainer)) {
             is HomeFragment -> {}
+            is CarDetailsFragment -> {}
             else -> openHome()
         }
     }
