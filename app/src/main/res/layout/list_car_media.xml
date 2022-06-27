@@ -15,9 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/ShapeAppearance.App.25"
-        app:strokeColor="@color/bg_makes"
-        app:strokeWidth="4dp" />
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.App.25" />
 
     <ImageView
         android:id="@+id/playVideo"

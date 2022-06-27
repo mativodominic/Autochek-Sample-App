@@ -7,9 +7,17 @@ interface CarDetailsContract {
         fun mediaCount() : Int
         fun bindMediaViewHolder(holder: CarMediaItem, position: Int)
         fun loadMediaAt(position: Int)
+
+        fun descriptionCount(): Int
+        fun bindDescriptionViewHolder(holder: VehicleDescriptionItem, position: Int)
     }
 
     interface CarMediaItem {
         fun bind(model: CarMedia)
     }
+
+    interface VehicleDescriptionItem {
+        fun bind(model: VehicleDescription)
+    }
+
 }

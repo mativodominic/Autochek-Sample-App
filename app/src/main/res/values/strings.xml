@@ -12,4 +12,16 @@
     <string name="error_loading_popular_makes">Sorry, something happened while loading data!</string>
     <string name="error_loading_car_media">Sorry, something happened while loading car media!</string>
 
+    <string name="vehicle_description">Vehicle Description</string>
+    <string name="engine_type">Engine Type</string>
+    <string name="engine_capacity">Engine Capacity (cc)</string>
+    <string name="engine_transmission">Transmission</string>
+    <string name="fuel_type">Fuel Type</string>
+    <string name="interior_color">Interior color</string>
+    <string name="exterior_color">Exterior color</string>
+    <string name="vin">VIN</string>
+    <string name="vehicle_id">Vehicle ID</string>
+    <string name="wheel_type">Wheel Type</string>
+    <string name="body_type">Body Type</string>
+
 </resources>

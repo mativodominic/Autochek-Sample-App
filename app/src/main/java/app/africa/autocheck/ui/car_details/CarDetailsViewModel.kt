@@ -14,10 +14,11 @@ import kotlinx.coroutines.launch
 
 class CarDetailsViewModel : BaseViewModel(), CarDetailsContract.ViewModel{
 
-    private var carDetails: CarDetails? = null
+    var carDetails: CarDetails? = null
     lateinit var car: Car
     val mediaList = mutableListOf<CarMedia>()
     var selectedMedia : CarMedia? = null
+    val description = mutableListOf<VehicleDescription>()
 
     val loadMediaState = CustomLiveData<AutoState>()
     val loadDetailsState = CustomLiveData<AutoState>()
@@ -53,6 +54,15 @@ class CarDetailsViewModel : BaseViewModel(), CarDetailsContract.ViewModel{
             }
             else loadDetailsState.postError(res)
         }
+    }
+
+    override fun descriptionCount(): Int = description.size
+
+    override fun bindDescriptionViewHolder(
+        holder: CarDetailsContract.VehicleDescriptionItem,
+        position: Int
+    ) {
+        holder.bind(description[position])
     }
 
     override fun mediaCount(): Int = mediaList.size

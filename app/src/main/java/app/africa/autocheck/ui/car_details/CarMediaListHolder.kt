@@ -31,7 +31,7 @@ class CarMediaListHolder(
                 onSuccess = { _, result ->
                     Palette.Builder(result.drawable.toBitmap()).generate { palette ->
                         val context = binding.root.context
-                        val bgColor = palette?.getDarkVibrantColor(
+                        val bgColor = palette?.getDarkMutedColor(
                             ContextCompat.getColor(
                                 context, R
                                     .color.featured_car_bg
