@@ -2,6 +2,9 @@ package app.africa.autocheck.core.framework.retrofit
 
 import java.io.IOException
 
+/**
+ * @author Dominic Mativo
+ */
 sealed class ApiResponse<out T : Any, out U : Any> {
     data class Success<T : Any>(val body: T) : ApiResponse<T, Nothing>()
 

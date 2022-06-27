@@ -18,14 +18,14 @@ data class CarDetails(
     val gradeScore: Double?,
 
     val hasWarranty: Boolean,
-    val marketplacePrice: Int,
-    val marketplaceOldPrice: Int,
+    val marketplacePrice: Double,
+    val marketplaceOldPrice: Double,
     val hasFinancing: Boolean,
     val mileageUnit: String?,
 
-    val installment: Int,
+    val installment: Double,
     val depositReceived: Boolean,
-    val loanValue: Int,
+    val loanValue: Double,
     val websiteUrl: String?,
     val bodyTypeId: Int,
     val sold: Boolean,

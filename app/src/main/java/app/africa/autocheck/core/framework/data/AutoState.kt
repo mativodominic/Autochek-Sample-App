@@ -1,5 +1,8 @@
 package app.africa.autocheck.core.framework.data
 
+/**
+ * @author Dominic Mativo
+ */
 sealed class AutoState {
     object Loading : AutoState()
     object NoData : AutoState()

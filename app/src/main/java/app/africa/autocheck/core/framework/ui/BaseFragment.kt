@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.snackbar.Snackbar
 
+/**
+ * @author Dominic Mativo
+ */
 abstract class BaseFragment(@LayoutRes rootLayoutId: Int) : Fragment(rootLayoutId) {
 
     private var vProgress: View? = null

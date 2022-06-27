@@ -8,6 +8,9 @@ import app.africa.autocheck.core.data.popular.repo.AutoRepository
 import app.africa.autocheck.core.data.popular.repo.AutoRepositorySource
 import org.koin.dsl.module
 
+/**
+ * @author Dominic Mativo
+ */
 val rootModule = module {
     //single { AppDatabase.getInstance(androidContext()) }
 }

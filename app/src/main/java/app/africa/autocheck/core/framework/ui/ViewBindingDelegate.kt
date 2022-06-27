@@ -9,6 +9,9 @@ import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 import androidx.lifecycle.DefaultLifecycleObserver
 
+/**
+ * @author Dominic Mativo
+ */
 class ViewBindingDelegate<T : ViewBinding>(
     val fragment: Fragment,
     val viewBindingFactory: (View) -> T
@@ -37,7 +40,8 @@ class ViewBindingDelegate<T : ViewBinding>(
 
         val lifecycle = fragment.viewLifecycleOwner.lifecycle
         if (!lifecycle.currentState.isAtLeast(Lifecycle.State.INITIALIZED)) {
-            throw IllegalStateException("Should not attempt to get bindings when Fragment views are destroyed.")
+            throw IllegalStateException("Do not attempt to get bindings when Fragment views are " +
+                    "destroyed.")
         }
 
         return viewBindingFactory(thisRef.requireView()).also { this.binding = it }

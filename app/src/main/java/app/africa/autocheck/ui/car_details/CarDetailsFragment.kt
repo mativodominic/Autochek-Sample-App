@@ -54,11 +54,14 @@ class CarDetailsFragment : BaseMvpFragment<CarDetailsViewModel>(R.layout.car_det
 
         viewModel.loadDetailsState.observe(this) {
             when (it) {
+                is AutoState.Loading -> onShowProgress()
                 is AutoState.Success -> {
+                    onHideProgress()
                     binding.vehicleDescContainer.visibility = View.VISIBLE
                     showMoreDetails()
                 }
                 else -> {
+                    onHideProgress()
                     binding.vehicleDescContainer.visibility = View.GONE
                 }
             }

@@ -7,6 +7,9 @@ import com.google.gson.JsonElement
 import com.google.gson.reflect.TypeToken
 import org.koin.core.component.KoinComponent
 
+/**
+ * @author Dominic Mativo
+ */
 typealias GenericResponse<S> = ApiResponse<S, APIError>
 
 open class BaseRemoteSource <S>(private val gson: Gson = Gson()): KoinComponent {

@@ -9,6 +9,8 @@ import androidx.lifecycle.Observer
 import java.util.concurrent.atomic.AtomicBoolean
 
 /**
+ * @author Dominic Mativo
+ *
  * A lifecycle aware observable that only sends updates after subscription. This LiveData only
  * calls the observable if there's an explicit call to setValue() or call()
  */

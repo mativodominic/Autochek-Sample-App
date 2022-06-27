@@ -1,5 +1,8 @@
 package app.africa.autocheck.core.framework.remote
 
+/**
+ * @author Dominic Mativo
+ */
 data class BaseApiResponse<T>(var data: T)
 
 data class BaseApiMakesResponse<T>(var makeList: List<T>)

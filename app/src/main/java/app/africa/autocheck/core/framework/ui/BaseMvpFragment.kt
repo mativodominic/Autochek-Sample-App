@@ -9,6 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import timber.log.Timber
 
+/**
+ * @author Dominic Mativo
+ */
 abstract class BaseMvpFragment<T : BaseViewModel>(@LayoutRes rootLayoutId: Int) :
     Fragment(rootLayoutId) {
 

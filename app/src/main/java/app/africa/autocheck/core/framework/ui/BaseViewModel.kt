@@ -5,6 +5,9 @@ import app.africa.autocheck.core.data.popular.repo.AutoRepositorySource
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
+/**
+ * @author Dominic Mativo
+ */
 abstract class BaseViewModel: ViewModel(), KoinComponent {
     val repo : AutoRepositorySource by inject()
 

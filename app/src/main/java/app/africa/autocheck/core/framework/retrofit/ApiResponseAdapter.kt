@@ -6,6 +6,9 @@ import retrofit2.CallAdapter
 import retrofit2.Converter
 import java.lang.reflect.Type
 
+/**
+ * @author Dominic Mativo
+ */
 class ApiResponseAdapter<S : Any, E : Any>(
     private val successType: Type,
     private val errorBodyConverter: Converter<ResponseBody, E>

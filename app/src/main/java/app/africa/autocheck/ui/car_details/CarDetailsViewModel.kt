@@ -45,7 +45,7 @@ class CarDetailsViewModel : BaseViewModel(), CarDetailsContract.ViewModel{
     fun loadCarDetails() {
         loadDetailsState.postValue(AutoState.Loading)
         viewModelScope.launch {
-            delay(1000)
+            delay(2000)
             val res = repo.fetchCarDetails(car.id)
             if (res is ApiResponse.Success) {
                 carDetails = res.body

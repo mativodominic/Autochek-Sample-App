@@ -9,6 +9,9 @@ import retrofit2.Converter
 import retrofit2.Response
 import java.io.IOException
 
+/**
+ * @author Dominic Mativo
+ */
 internal class ApiResponseCall<S : Any, E : Any>(
     private val delegate: Call<S>,
     private val errorConverter: Converter<ResponseBody, E>

@@ -8,6 +8,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
+/**
+ * @author Dominic Mativo
+ */
 fun api(): AutoApiComponent = AutoApiModule
 
 interface AutoApiComponent {

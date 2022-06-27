@@ -6,6 +6,9 @@ import retrofit2.Retrofit
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 
+/**
+ * @author Dominic Mativo
+ */
 class ApiResponseAdapterFactory : CallAdapter.Factory() {
 
     override fun get(

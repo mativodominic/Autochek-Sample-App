@@ -15,7 +15,7 @@
 
     <TextView
         android:id="@+id/descTitle"
-        style="@style/label.body.14"
+        style="@style/label.body.13"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="wrap_content"
@@ -26,10 +26,9 @@
     <TextView
         android:id="@+id/descValue"
         style="@style/label.body.14"
+        android:layout_width="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/engine_type"
-        android:layout_width="wrap_content"
-        android:fontFamily="@font/montserrat_medium" />
+        tools:text="@string/engine_type" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,9 @@ import androidx.viewbinding.ViewBinding
 import app.africa.autocheck.ui.main.MainFragment
 import timber.log.Timber
 
+/**
+ * @author Dominic Mativo
+ */
 abstract class BaseMvpActivity : AppCompatActivity() {
 
     /**
