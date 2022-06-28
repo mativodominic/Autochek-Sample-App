@@ -25,8 +25,7 @@ class CarMediaListHolder(
 
         binding.mediaImage.load(model.url) {
             crossfade(true)
-
-            allowHardware(false)
+            allowHardware(true)
             listener(
                 onSuccess = { _, result ->
                     Palette.Builder(result.drawable.toBitmap()).generate { palette ->
@@ -37,6 +36,7 @@ class CarMediaListHolder(
                                     .color.featured_car_bg
                             )
                         )
+
                         if (bgColor != null) {
                             binding.mediaImage.setBackgroundColor(bgColor)
                         }

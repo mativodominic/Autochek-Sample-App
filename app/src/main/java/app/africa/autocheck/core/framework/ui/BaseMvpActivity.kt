@@ -1,6 +1,9 @@
 package app.africa.autocheck.core.framework.ui
 
+import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.LayoutInflater
+import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
@@ -10,7 +13,7 @@ import timber.log.Timber
 /**
  * @author Dominic Mativo
  */
-abstract class BaseMvpActivity : AppCompatActivity() {
+abstract class BaseMvpActivity(@LayoutRes rootLayoutId: Int) : AppCompatActivity(rootLayoutId) {
 
     /**
      * Add Fragment to activity.
@@ -30,10 +33,9 @@ abstract class BaseMvpActivity : AppCompatActivity() {
         }
     }
 
-    inline fun <T : ViewBinding> AppCompatActivity.viewBinding(
-        crossinline bindingInflater: (LayoutInflater) -> T) =
+    fun <T : ViewBinding> AppCompatActivity.viewBinding(bindingInflater: (LayoutInflater) -> T) =
         lazy(LazyThreadSafetyMode.NONE) {
-            bindingInflater.invoke(layoutInflater)
+            bindingInflater.invoke(this.layoutInflater)
         }
 
     open fun onMoveBack() {

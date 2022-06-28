@@ -17,7 +17,10 @@ import app.africa.autocheck.core.framework.utils.format
 import app.africa.autocheck.core.framework.utils.formatAmount
 import app.africa.autocheck.databinding.CarDetailsFragmentBinding
 import app.africa.autocheck.ui.main.MainFragment
+import app.africa.autocheck.ui.photo_detail.PhotoDetailActivity
 import coil.load
+import com.igreenwood.loupe.Loupe
+import okhttp3.internal.toImmutableList
 
 class CarDetailsFragment : BaseMvpFragment<CarDetailsViewModel>(R.layout.car_details_fragment) {
 
@@ -150,7 +153,6 @@ class CarDetailsFragment : BaseMvpFragment<CarDetailsViewModel>(R.layout.car_det
                     }
                 )
             }
-
         }
     }
 
@@ -183,6 +185,16 @@ class CarDetailsFragment : BaseMvpFragment<CarDetailsViewModel>(R.layout.car_det
         }
 
         showSummary()
+
+        binding.carImage.setOnClickListener {
+            startActivity(PhotoDetailActivity.createIntent(
+                requireContext(),
+                ArrayList(viewModel.mediaList.map { it.url }),
+                viewModel.selectedMedia?.position ?: 0
+            ))
+
+            requireActivity().overridePendingTransition (R.anim.fade_in_fast, 0)
+        }
     }
 
     private fun showSummary() {
@@ -194,8 +206,7 @@ class CarDetailsFragment : BaseMvpFragment<CarDetailsViewModel>(R.layout.car_det
 
         binding.carImage.load(carModel.imageUrl) {
             crossfade(true)
-
-            allowHardware(false)
+            allowHardware(true)
             listener(
                 onSuccess = { _, result ->
                     Palette.Builder(result.drawable.toBitmap()).generate { palette ->

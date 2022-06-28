@@ -77,6 +77,7 @@ class MainFragment : BaseFragment(R.layout.content_main) {
 
     fun openCarDetails(car: Car) {
         replaceFragment(CarDetailsFragment.getInstance(car), R.id.contentMainContainer, true)
+        requireActivity().overridePendingTransition (R.anim.fade_in_fast, 0)
     }
 
 }

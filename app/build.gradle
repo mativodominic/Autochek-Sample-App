@@ -86,6 +86,8 @@ dependencies {
     implementation coil_video
     implementation coil
     implementation pallete
+    implementation loupe
+    implementation loupeExtensions
     implementation materialProgress
     implementation timber
 

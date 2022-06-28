@@ -10,6 +10,7 @@ import app.africa.autocheck.core.framework.remote.Pagination
 import app.africa.autocheck.core.framework.retrofit.ApiResponse
 import app.africa.autocheck.core.framework.ui.BaseViewModel
 import app.africa.autocheck.core.framework.utils.postError
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class HomeViewModel: BaseViewModel(), HomeContract.ViewModel {
@@ -27,8 +28,9 @@ class HomeViewModel: BaseViewModel(), HomeContract.ViewModel {
     val viewDetailsState = CustomLiveData<Car>()
 
     fun loadPopularMakes() {
+        if (makes.isNotEmpty()) return
         loadMakesState.postValue(AutoState.Loading)
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val res = repo.getPopularMakes()
             if (res is ApiResponse.Success) {
                 makes.apply {
@@ -46,8 +48,9 @@ class HomeViewModel: BaseViewModel(), HomeContract.ViewModel {
      * Loads the first page of cars
      */
     fun loadCars() {
+        if (cars.isNotEmpty()) return
         loadCarsState.postValue(AutoState.Loading)
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val res = repo.getCars(carPageNumber, carPageSize)
             if (res is ApiResponse.Success) {
                 cars.apply {

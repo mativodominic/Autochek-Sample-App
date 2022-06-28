@@ -9,8 +9,10 @@ import app.africa.autocheck.core.framework.data.AutoState
 import app.africa.autocheck.core.framework.retrofit.ApiResponse
 import app.africa.autocheck.core.framework.ui.BaseViewModel
 import app.africa.autocheck.core.framework.utils.postError
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.util.*
 
 class CarDetailsViewModel : BaseViewModel(), CarDetailsContract.ViewModel{
 
@@ -27,15 +29,18 @@ class CarDetailsViewModel : BaseViewModel(), CarDetailsContract.ViewModel{
     fun loadMedia() {
         loadMediaState.postValue(AutoState.Loading)
 
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val res = repo.fetchCarMedia(car.id)
             if (res is ApiResponse.Success) {
                 mediaList.apply {
                     clear()
+                    add(CarMedia(UUID.randomUUID().toString(), name = "Default", url = car
+                        .imageUrl?:"", type = "image/*"))
                     addAll(res.body)
                 }
 
-                //if (mediaList.isNotEmpty()) selectedMedia = mediaList[0]
+                selectedMedia = mediaList[0]
+                selectedMedia?.position = 0
                 loadMediaState.postValue(AutoState.Success)
             }
             else loadMediaState.postError(res)
@@ -44,8 +49,8 @@ class CarDetailsViewModel : BaseViewModel(), CarDetailsContract.ViewModel{
 
     fun loadCarDetails() {
         loadDetailsState.postValue(AutoState.Loading)
-        viewModelScope.launch {
-            delay(2000)
+        viewModelScope.launch(Dispatchers.IO) {
+            delay(400)
             val res = repo.fetchCarDetails(car.id)
             if (res is ApiResponse.Success) {
                 carDetails = res.body
@@ -73,6 +78,7 @@ class CarDetailsViewModel : BaseViewModel(), CarDetailsContract.ViewModel{
 
     override fun loadMediaAt(position: Int) {
         selectedMedia = mediaList[position]
+        selectedMedia?.position = position
         displayMediaState.postValue(AutoState.Success)
     }
 

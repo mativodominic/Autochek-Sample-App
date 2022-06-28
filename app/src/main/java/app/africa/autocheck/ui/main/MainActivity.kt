@@ -3,9 +3,9 @@ package app.africa.autocheck.ui.main
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import app.africa.autocheck.core.framework.ui.BaseMvpActivity
+import app.africa.autocheck.core.framework.ui.BaseActivity
 
-class MainActivity : BaseMvpActivity() {
+class MainActivity : BaseActivity() {
 
     companion object {
         fun start(context: Context) {

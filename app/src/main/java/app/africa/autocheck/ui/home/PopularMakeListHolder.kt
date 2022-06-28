@@ -23,16 +23,15 @@ class PopularMakeListHolder(
         binding.makeImage.load(model.imageUrl) {
             placeholder(R.drawable.ic_placeholder)
             crossfade(true)
+            allowHardware(true)
 
-            allowHardware(false)
             listener(
                 onSuccess = { _, result ->
                     Palette.Builder(result.drawable.toBitmap()).generate { palette ->
                         val context = binding.root.context
                         val bgColor = palette?.getDarkMutedColor(
                             ContextCompat.getColor
-                            (context, R
-                            .color.featured_car_bg))
+                            (context, R.color.featured_car_bg))
                         if (bgColor != null) {
                             binding.makeImage.setBackgroundColor(bgColor)
                         }

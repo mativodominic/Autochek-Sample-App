@@ -9,6 +9,8 @@ data class CarMedia(
     val type: String?
 ) : Serializable {
 
+    var position: Int = 0
+
     fun isVideo() = type?.startsWith("video") ?: false
 
 }
