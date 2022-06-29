@@ -11,6 +11,7 @@
     <color  name="auto_on_secondary">#FFCC66</color>
     <color  name="uweal_on_primary">#0F1327</color>
     <color name="auto_surface_color">#FAFAFA</color>
+    <color name="auto_surface_v1_color">#F5F5F5</color>
     <color name="auto_on_surface">#0F1327</color>
     <color name="auto_error_color">#EE3124</color>
     <color name="auto_card_bg">#989ACF</color>

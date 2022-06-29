@@ -1,5 +1,6 @@
 package app.africa.autocheck.ui.car_details
 
+import android.app.ActivityOptions
 import android.os.Bundle
 import android.view.View
 import android.widget.MediaController
@@ -7,6 +8,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.os.bundleOf
 import androidx.palette.graphics.Palette
+import androidx.transition.Fade
+import androidx.transition.TransitionManager
 import app.africa.autocheck.R
 import app.africa.autocheck.core.data.cars.Car
 import app.africa.autocheck.core.data.cars.CarMedia
@@ -19,8 +22,6 @@ import app.africa.autocheck.databinding.CarDetailsFragmentBinding
 import app.africa.autocheck.ui.main.MainFragment
 import app.africa.autocheck.ui.photo_detail.PhotoDetailActivity
 import coil.load
-import com.igreenwood.loupe.Loupe
-import okhttp3.internal.toImmutableList
 
 class CarDetailsFragment : BaseMvpFragment<CarDetailsViewModel>(R.layout.car_details_fragment) {
 
@@ -76,6 +77,9 @@ class CarDetailsFragment : BaseMvpFragment<CarDetailsViewModel>(R.layout.car_det
                 is AutoState.Success -> {
                     onHideProgress()
                     mediaAdapter.notifyDataSetChanged()
+                    val mFade = Fade(Fade.IN)
+                    TransitionManager.beginDelayedTransition(binding.root, mFade)
+                    binding.carMediaList.visibility = View.VISIBLE
                 }
                 is AutoState.Error -> {
                     onHideProgress()
@@ -88,21 +92,34 @@ class CarDetailsFragment : BaseMvpFragment<CarDetailsViewModel>(R.layout.car_det
 
     private fun showMoreDetails() {
         viewModel.description.clear()
-        binding.sellingCondition.text = viewModel.carDetails?.sellingCondition?:""
+        binding.sellingCondition.text = viewModel.carDetails?.sellingCondition ?: ""
 
-        addDescription(getString(R.string.engine_type), viewModel.carDetails?.engineType?:"")
+        addDescription(getString(R.string.engine_type), viewModel.carDetails?.engineType ?: "")
         addDescription(getString(R.string.engine_capacity), "")
-        addDescription(getString(R.string.engine_transmission), viewModel.carDetails?.transmission?:"")
-        addDescription(getString(R.string.fuel_type), viewModel.carDetails?.fuelType?:"")
+        addDescription(
+            getString(R.string.engine_transmission),
+            viewModel.carDetails?.transmission ?: ""
+        )
+        addDescription(getString(R.string.fuel_type), viewModel.carDetails?.fuelType ?: "")
 
-        addDescription(getString(R.string.interior_color), viewModel.carDetails?.interiorColor?:"")
-        addDescription(getString(R.string.exterior_color), viewModel.carDetails?.exteriorColor?:"")
-        addDescription(getString(R.string.vin), viewModel.carDetails?.vin?:"")
-        addDescription(getString(R.string.wheel_type), viewModel.carDetails?.model?.wheelType?:"")
-        addDescription(getString(R.string.body_type), viewModel.carDetails?.bodyType?.name?:"")
+        addDescription(
+            getString(R.string.interior_color),
+            viewModel.carDetails?.interiorColor ?: ""
+        )
+        addDescription(
+            getString(R.string.exterior_color),
+            viewModel.carDetails?.exteriorColor ?: ""
+        )
+        addDescription(getString(R.string.vin), viewModel.carDetails?.vin ?: "")
+        addDescription(getString(R.string.wheel_type), viewModel.carDetails?.model?.wheelType ?: "")
+        addDescription(getString(R.string.body_type), viewModel.carDetails?.bodyType?.name ?: "")
         addDescription(getString(R.string.vehicle_id), viewModel.carDetails?.id)
 
         descriptionAdapter.notifyDataSetChanged()
+
+        val mFade = Fade(Fade.IN)
+        TransitionManager.beginDelayedTransition(binding.root, mFade)
+        binding.vehicleDescContainer.visibility = View.VISIBLE
     }
 
     private fun addDescription(title: String, value: String?) {
@@ -187,13 +204,19 @@ class CarDetailsFragment : BaseMvpFragment<CarDetailsViewModel>(R.layout.car_det
         showSummary()
 
         binding.carImage.setOnClickListener {
-            startActivity(PhotoDetailActivity.createIntent(
-                requireContext(),
-                ArrayList(viewModel.mediaList.map { it.url }),
-                viewModel.selectedMedia?.position ?: 0
-            ))
+            val options = ActivityOptions.makeSceneTransitionAnimation(
+                requireActivity(), binding
+                    .carImage, binding.carImage.transitionName
+            )
+            startActivity(
+                PhotoDetailActivity.createIntent(
+                    requireContext(),
+                    ArrayList(viewModel.mediaList.map { it.url }),
+                    viewModel.selectedMedia?.position ?: 0
+                ), options.toBundle()
+            )
 
-            requireActivity().overridePendingTransition (R.anim.fade_in_fast, 0)
+            requireActivity().overridePendingTransition(R.anim.fade_in_fast, 0)
         }
     }
 
@@ -205,6 +228,7 @@ class CarDetailsFragment : BaseMvpFragment<CarDetailsViewModel>(R.layout.car_det
         } else binding.location.text = carModel.city
 
         binding.carImage.load(carModel.imageUrl) {
+            if (carModel.memoryCacheKey != null) placeholderMemoryCacheKey(carModel.memoryCacheKey)
             crossfade(true)
             allowHardware(true)
             listener(

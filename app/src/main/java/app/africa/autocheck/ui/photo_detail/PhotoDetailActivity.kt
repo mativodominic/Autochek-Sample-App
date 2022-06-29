@@ -1,5 +1,6 @@
 package app.africa.autocheck.ui.photo_detail
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -58,7 +59,7 @@ class PhotoDetailActivity : BaseMvpActivity(R.layout.activity_photo_detail) {
         }
 
         binding.toolbar.setNavigationOnClickListener {
-            finish()
+            finishAfterTransition()
         }
     }
 
@@ -81,7 +82,8 @@ class PhotoDetailActivity : BaseMvpActivity(R.layout.activity_photo_detail) {
 
     override fun onBackPressed() {
         adapter.clear()
-        super.onBackPressed()
+        //super.onBackPressed()
+        finishAfterTransition()
     }
 
     private fun initAdapter() {

@@ -1,6 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Autocheck" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="android:windowActivityTransitions">true</item>
+
+        <!--Shared Element Transitions-->
+        <item name="android:windowSharedElementEnterTransition">@transition/change_image_transform</item>
+        <item name="android:windowSharedElementExitTransition">@transition/change_image_transform</item>
 
         <!-- Primary brand color, action bar bg -->
         <item name="colorPrimary">@color/auto_primary</item>
@@ -28,8 +33,8 @@
         <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
 
         <!-- Surface -->
-        <item name="colorSurface">@color/auto_surface_color</item>
-        <item name="android:colorBackground">@color/auto_surface_color</item>
+        <item name="colorSurface">@color/auto_surface_v1_color</item>
+        <item name="android:colorBackground">@color/auto_surface_v1_color</item>
         <item name="colorOnSurface">@color/auto_on_surface</item>
 
         <!--Error-->

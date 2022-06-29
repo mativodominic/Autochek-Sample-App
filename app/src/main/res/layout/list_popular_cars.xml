@@ -23,6 +23,7 @@
         app:shapeAppearanceOverlay="@style/ShapeAppearance.App.FeaturedCarsImage"
         app:strokeColor="@color/white"
         android:elevation="1dp"
+        android:transitionName="car_image"
         app:strokeWidth="3dp" />
 
     <ImageView
@@ -60,6 +61,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:background="@color/white"
             android:layout_height="match_parent">
 
             <TextView

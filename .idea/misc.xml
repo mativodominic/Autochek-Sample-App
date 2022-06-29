@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.3233695652173913" />
         <entry key="app/src/main/res/drawable/bg_cart.xml" value="0.2285" />
         <entry key="app/src/main/res/drawable/bg_seach_input.xml" value="0.23" />
         <entry key="app/src/main/res/drawable/bg_search_filter.xml" value="0.23" />
@@ -28,11 +29,11 @@
         <entry key="app/src/main/res/drawable/ic_toolbar_back.xml" value="0.23" />
         <entry key="app/src/main/res/font/montserrat_medium.xml" value="0.28996138996139" />
         <entry key="app/src/main/res/layout/activity_photo_detail.xml" value="0.269921875" />
-        <entry key="app/src/main/res/layout/car_details_fragment.xml" value="0.26756756756756755" />
+        <entry key="app/src/main/res/layout/car_details_fragment.xml" value="0.23515625" />
         <entry key="app/src/main/res/layout/cars_details_fragment.xml" value="0.28203125" />
         <entry key="app/src/main/res/layout/cart_layout.xml" value="0.3609375" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.269921875" />
-        <entry key="app/src/main/res/layout/home_fragment.xml" value="0.24930555555555556" />
+        <entry key="app/src/main/res/layout/home_fragment.xml" value="0.23515625" />
         <entry key="app/src/main/res/layout/list_car_media.xml" value="0.193359375" />
         <entry key="app/src/main/res/layout/list_popular_cars.xml" value="0.270703125" />
         <entry key="app/src/main/res/layout/list_popular_makes.xml" value="0.35989583333333336" />

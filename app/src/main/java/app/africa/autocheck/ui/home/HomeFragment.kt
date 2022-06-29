@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
 import android.widget.TextView
+import androidx.fragment.app.commit
 import app.africa.autocheck.R
 import app.africa.autocheck.core.framework.data.AutoReloadState
 import app.africa.autocheck.core.framework.data.AutoState
@@ -88,6 +89,7 @@ class HomeFragment : BaseMvpFragment<HomeViewModel>(R.layout.home_fragment) {
 
         viewModel.viewDetailsState.observe(this) {
             val parent = parentFragment as MainFragment
+            val hashmap = hashMapOf<String, View>()
             parent.openCarDetails(it)
         }
     }

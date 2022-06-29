@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:liftOnScroll="true">
@@ -17,11 +18,39 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingEnd="16dp"
             android:paddingStart="0dp"
+            android:paddingEnd="16dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:menu="@menu/cart_menu"
             app:navigationIcon="@drawable/ic_round_home"
             app:title="@string/explore" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp">
+
+            <include
+                android:id="@+id/searchStub"
+                layout="@layout/search_snippet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/popularMakesList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@+id/searchStub"
+                tools:listitem="@layout/list_popular_makes" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -29,64 +58,44 @@
         android:id="@+id/loadProgressBar"
         android:layout_width="match_parent"
         android:layout_height="72dp"
+        android:layout_marginTop="56dp"
+        android:indeterminate="true"
         android:visibility="gone"
+        app:indicatorColor="?attr/colorOnSecondary"
+        app:indicatorDirectionLinear="startToEnd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        app:indicatorColor="?attr/colorOnSecondary"
-        android:indeterminate="true"
-        app:indicatorDirectionLinear="startToEnd"
         app:trackColor="@color/auto_card_bg"
-        app:trackThickness="2dp"
-        />
-
-
-    <include
-        android:id="@+id/searchStub"
-        layout="@layout/search_snippet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        android:layout_marginTop="16dp"
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/popularMakesList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/list_popular_makes"
-        app:layout_constraintTop_toBottomOf="@+id/searchStub"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="20dp"
-        />
+        app:trackThickness="2dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/popularCarsList"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
         android:orientation="vertical"
+        android:paddingTop="8dp"
+        android:paddingBottom="72dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/list_popular_cars"
-        app:layout_constraintTop_toBottomOf="@+id/popularMakesList"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginTop="24dp"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/popularMakesList"
+        tools:listitem="@layout/list_popular_cars" />
 
     <com.pnikosis.materialishprogress.ProgressWheel
         android:id="@+id/progressView"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:layout_gravity="center_horizontal|bottom"
         android:layout_marginBottom="16dp"
         android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:matProg_barColor="?attr/colorOnSecondary"
         app:matProg_barWidth="2dp"
         app:matProg_circleRadius="24dp"
         app:matProg_progressIndeterminate="true" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -2,6 +2,7 @@ package app.africa.autocheck.ui.home
 
 import app.africa.autocheck.core.data.cars.Car
 import app.africa.autocheck.core.data.popular.PopularMake
+import coil.memory.MemoryCache
 
 interface HomeContract {
 
@@ -12,7 +13,7 @@ interface HomeContract {
 
         fun carsCount(): Int
         fun bindCarViewHolder(holder: CarItem, position: Int)
-        fun onCarSelected(position: Int)
+        fun onCarSelected(position: Int, memoryCacheKey: MemoryCache.Key?)
         fun onFavouriteCar(position: Int)
     }
 

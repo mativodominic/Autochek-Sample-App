@@ -1,5 +1,6 @@
 package app.africa.autocheck.core.data.cars
 
+import coil.memory.MemoryCache
 import java.io.Serializable
 
 data class Car(
@@ -24,5 +25,6 @@ data class Car(
     val sold: Boolean,
     val transmission: String?
 ) : Serializable {
+    var memoryCacheKey: MemoryCache.Key? = null
     var isFavourite: Boolean = false
 }

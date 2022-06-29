@@ -10,6 +10,7 @@ import app.africa.autocheck.core.framework.utils.format
 import app.africa.autocheck.core.framework.utils.formatAmount
 import app.africa.autocheck.databinding.ListPopularCarsBinding
 import coil.load
+import coil.result
 
 class CarListHolder(
     private val binding: ListPopularCarsBinding,
@@ -21,7 +22,9 @@ class CarListHolder(
             viewModel.onFavouriteCar(bindingAdapterPosition)
         }
 
-        binding.root.setOnClickListener { viewModel.onCarSelected(bindingAdapterPosition) }
+        binding.root.setOnClickListener {
+            viewModel.onCarSelected(bindingAdapterPosition, binding.carImage.result?.request?.memoryCacheKey)
+        }
     }
 
     override fun onBind(model: Car) {
@@ -44,6 +47,7 @@ class CarListHolder(
             allowHardware(false)
             listener(
                 onSuccess = { _, result ->
+                    val mck = result.memoryCacheKey
                     Palette.Builder(result.drawable.toBitmap()).generate { palette ->
                         val context = binding.root.context
                         val bgColor = palette?.getDarkMutedColor(ContextCompat.getColor

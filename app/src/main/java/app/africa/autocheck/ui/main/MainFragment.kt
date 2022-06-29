@@ -2,6 +2,7 @@ package app.africa.autocheck.ui.main
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.FragmentTransaction
 import app.africa.autocheck.R
 import app.africa.autocheck.core.data.cars.Car
 import app.africa.autocheck.core.framework.ui.BaseFragment

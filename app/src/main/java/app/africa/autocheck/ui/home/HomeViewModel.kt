@@ -10,6 +10,7 @@ import app.africa.autocheck.core.framework.remote.Pagination
 import app.africa.autocheck.core.framework.retrofit.ApiResponse
 import app.africa.autocheck.core.framework.ui.BaseViewModel
 import app.africa.autocheck.core.framework.utils.postError
+import coil.memory.MemoryCache
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -106,8 +107,10 @@ class HomeViewModel: BaseViewModel(), HomeContract.ViewModel {
         holder.onBind(cars[position])
     }
 
-    override fun onCarSelected(position: Int) {
-        viewDetailsState.postValue(cars[position])
+    override fun onCarSelected(position: Int, memoryCacheKey: MemoryCache.Key?) {
+        val selectedCar = cars[position]
+        selectedCar.memoryCacheKey = memoryCacheKey
+        viewDetailsState.postValue(selectedCar)
     }
 
     override fun onFavouriteCar(position: Int) {
