@@ -9,13 +9,16 @@ import app.africa.autocheck.core.framework.data.AutoState
 import app.africa.autocheck.core.framework.remote.Pagination
 import app.africa.autocheck.core.framework.retrofit.ApiResponse
 import app.africa.autocheck.core.framework.ui.BaseViewModel
+import app.africa.autocheck.core.framework.ui.LayoutPagination
 import app.africa.autocheck.core.framework.utils.postError
 import coil.memory.MemoryCache
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class HomeViewModel: BaseViewModel(), HomeContract.ViewModel {
-
+    val layoutPagination = LayoutPagination()
     private var pagination: Pagination? = null
     val makes = mutableListOf<PopularMake>()
     val cars = mutableListOf<Car>()
@@ -60,6 +63,11 @@ class HomeViewModel: BaseViewModel(), HomeContract.ViewModel {
                 }
 
                 pagination = res.body.pagination
+
+                layoutPagination.TOTAL_PAGES = pagination?.total?.div(carPageSize) ?: 1
+                layoutPagination.CURRENT_PAGE = pagination?.currentPage ?: 1
+                layoutPagination.isLoading = false
+
                 loadCarsState.postValue(AutoState.Success)
             }
             else loadCarsState.postError(res)
@@ -77,8 +85,13 @@ class HomeViewModel: BaseViewModel(), HomeContract.ViewModel {
         val totalFetched = pagination?.pageSize!! * pagination?.currentPage!!
         if (totalFetched >= pagination!!.total) return
 
+        layoutPagination.lastLoadingPosition = cars.size - 1
         loadMoreCarsState.postValue(AutoState.Loading)
         viewModelScope.launch {
+            delay(500)
+
+            Timber.d("Pagination: loadingMore: page ${layoutPagination.CURRENT_PAGE + 1} of ${layoutPagination.TOTAL_PAGES}")
+
             val res = repo.getCars(pagination?.currentPage!! +1, carPageSize)
             if (res is ApiResponse.Success) {
 
@@ -87,6 +100,9 @@ class HomeViewModel: BaseViewModel(), HomeContract.ViewModel {
                 }
 
                 pagination = res.body.pagination
+                layoutPagination.CURRENT_PAGE = pagination?.currentPage ?: 1
+                layoutPagination.isLoading = false
+
                 loadMoreCarsState.postValue(AutoState.Success)
             }
             else loadMoreCarsState.postError(res)

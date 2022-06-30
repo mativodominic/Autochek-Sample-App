@@ -4,6 +4,7 @@ import app.africa.autocheck.core.framework.CustomLiveData
 import app.africa.autocheck.core.framework.data.AutoState
 import app.africa.autocheck.core.framework.remote.GenericResponse
 import app.africa.autocheck.core.framework.retrofit.ApiResponse
+import timber.log.Timber.e
 import java.text.DecimalFormat
 
 
@@ -45,15 +46,28 @@ fun <T : Any> GenericResponse<Any>.handleError(): GenericResponse<T> {
 
 fun <T : Any> CustomLiveData<AutoState>.postError(res: GenericResponse<T>) {
     when (res) {
-        is ApiResponse.ApiError -> this.postValue(
-            AutoState.Error(Throwable(res.body.message))
-        )
-        is ApiResponse.NetworkError -> this.postValue(
-            AutoState.Error(res.error)
-        )
-        is ApiResponse.UnknownError -> this.postValue(
-            AutoState.Error(res.error)
-        )
+        is ApiResponse.ApiError -> {
+            e("ApiError: ${res.body}")
+            Throwable(res.body.message).printStackTrace()
+
+            this.postValue(
+                AutoState.Error(Throwable(res.body.message))
+            )
+        }
+        is ApiResponse.NetworkError -> {
+            e("NetworkError:")
+            res.error.printStackTrace()
+            this.postValue(
+                AutoState.Error(res.error)
+            )
+        }
+        is ApiResponse.UnknownError -> {
+            e("UnknownError:")
+            res.error?.printStackTrace()
+            this.postValue(
+                AutoState.Error(res.error)
+            )
+        }
         else -> {}
     }
 }

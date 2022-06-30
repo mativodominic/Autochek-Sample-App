@@ -23,7 +23,7 @@ data class CarDetails(
     val hasFinancing: Boolean,
     val mileageUnit: String?,
 
-    val installment: Double,
+    val installment: Double?,
     val depositReceived: Boolean,
     val loanValue: Double,
     val websiteUrl: String?,

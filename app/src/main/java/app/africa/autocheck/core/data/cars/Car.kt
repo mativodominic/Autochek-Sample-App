@@ -17,7 +17,7 @@ data class Car(
     val hasFinancing: Boolean,
     val mileage: Int,
     val mileageUnit: String?,
-    val installment: Int,
+    val installment: Double?,
     val depositReceived: Boolean,
     val loanValue: Double,
     val websiteUrl: String?,

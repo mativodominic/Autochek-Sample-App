@@ -227,7 +227,7 @@ class CarDetailsFragment : BaseMvpFragment<CarDetailsViewModel>(R.layout.car_det
     }
 
     private fun showSummary() {
-        binding.carTitle.text = carModel.title
+        binding.carTitles.text = carModel.title
 
         if (carModel.city.isNullOrEmpty()) {
             binding.location.visibility = View.GONE

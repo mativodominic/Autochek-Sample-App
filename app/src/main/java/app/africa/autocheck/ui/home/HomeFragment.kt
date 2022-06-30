@@ -10,6 +10,7 @@ import app.africa.autocheck.R
 import app.africa.autocheck.core.framework.data.AutoReloadState
 import app.africa.autocheck.core.framework.data.AutoState
 import app.africa.autocheck.core.framework.ui.BaseMvpFragment
+import app.africa.autocheck.core.framework.ui.PaginationScrollListener
 import app.africa.autocheck.core.framework.ui.viewBinding
 import app.africa.autocheck.databinding.HomeFragmentBinding
 import app.africa.autocheck.ui.main.MainFragment
@@ -71,7 +72,13 @@ class HomeFragment : BaseMvpFragment<HomeViewModel>(R.layout.home_fragment) {
                 is AutoState.Loading -> toggleProgress(true)
                 is AutoState.Success -> {
                     toggleProgress(false)
-                    carsAdapter.notifyDataSetChanged()
+                    //carsAdapter.notifyDataSetChanged()
+
+                    //viewModel.pagination.isLoading = false
+                    carsAdapter.notifyItemRangeChanged(
+                        viewModel.layoutPagination.lastLoadingPosition,
+                        viewModel.carsCount() - 1
+                    )
                 }
                 is AutoState.Error -> {
                     toggleProgress(false)
@@ -127,12 +134,28 @@ class HomeFragment : BaseMvpFragment<HomeViewModel>(R.layout.home_fragment) {
         }
     }
 
-    private fun  setupCarsAdapter() {
+    private fun setupCarsAdapter() {
         carsAdapter = CarListAdapter(viewModel, layoutInflater)
         binding.popularCarsList.apply {
             adapter = carsAdapter
             setHasFixedSize(true)
         }
+
+        binding.popularCarsList.addOnScrollListener(object :
+            PaginationScrollListener(binding.popularCarsList.layoutManager!!) {
+            override fun loadMoreItems() {
+                viewModel.layoutPagination.isLoading = true
+                viewModel.loadMoreCars()
+            }
+
+            override fun getTotalPageCount() = viewModel.layoutPagination.TOTAL_PAGES
+
+            override fun isLastPage() =
+                viewModel.layoutPagination.CURRENT_PAGE >= viewModel.layoutPagination.TOTAL_PAGES
+
+            override fun isLoading() = viewModel.layoutPagination.isLoading
+
+        })
     }
 
     override fun progressBarView(): View = binding.loadProgressBar

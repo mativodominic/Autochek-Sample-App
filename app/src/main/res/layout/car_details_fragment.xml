@@ -13,15 +13,44 @@
         app:layout_constraintTop_toTopOf="parent"
         app:liftOnScroll="true">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingEnd="16dp"
-            android:paddingStart="0dp"
-            app:menu="@menu/cart_menu"
-            app:navigationIcon="@drawable/ic_toolbar_back"
-            app:title="@string/product" />
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:title="afadfasdf"
+            app:titleCollapseMode="fade"
+            app:titleEnabled="false"
+            android:paddingBottom="8dp"
+            >
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingEnd="16dp"
+                android:paddingStart="0dp"
+                app:menu="@menu/cart_menu"
+                app:layout_scrollFlags="scroll|snap"
+                app:navigationIcon="@drawable/ic_toolbar_back"
+                app:title="@string/product" />
+
+            <TextView
+                android:id="@+id/carTitles"
+                style="@style/label.title.3"
+                tools:text="Mercedes-Benz ML 400"
+                android:textColor="@color/auto_on_surface"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="72dp"
+                android:transitionName="car_name"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
         <com.google.android.material.progressindicator.LinearProgressIndicator
             android:id="@+id/progressBar"
@@ -47,7 +76,10 @@
         >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="24dp"
+            android:clipToPadding="false"
+            >
 
             <TextView
                 android:id="@+id/carTitle"
@@ -58,10 +90,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_width="0dp"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="48dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginTop="16dp"
                 android:transitionName="car_name"
+                android:visibility="gone"
                 />
 
             <androidx.constraintlayout.widget.ConstraintLayout
