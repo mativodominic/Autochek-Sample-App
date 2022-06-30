@@ -5,6 +5,7 @@ import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.commit
 import com.google.android.material.snackbar.Snackbar
 
 /**
@@ -77,6 +78,24 @@ abstract class BaseFragment(@LayoutRes rootLayoutId: Int) : Fragment(rootLayoutI
         transaction.replace(containerId, fragment)
         if (addToBackStack) transaction.addToBackStack(fragment.javaClass.name)
         transaction.commit()
+    }
+
+    open fun replaceFragment(fragment: Fragment, containerId: Int, addToBackStack: Boolean =
+        false, hashmap: HashMap<String, View> = hashMapOf()) {
+        childFragmentManager.commit {
+            if (hashmap.isNotEmpty()) {
+                val iterator = hashmap.iterator()
+                while (iterator.hasNext()) {
+                    val key_value = iterator.next()
+                    addSharedElement(key_value.value, key_value.key)
+                }
+
+                setReorderingAllowed(true)
+            }
+
+            replace(containerId, fragment)
+            if (addToBackStack) addToBackStack(fragment.javaClass.name)
+        }
     }
 
 }

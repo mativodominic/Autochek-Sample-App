@@ -110,6 +110,7 @@ class HomeViewModel: BaseViewModel(), HomeContract.ViewModel {
     override fun onCarSelected(position: Int, memoryCacheKey: MemoryCache.Key?) {
         val selectedCar = cars[position]
         selectedCar.memoryCacheKey = memoryCacheKey
+        selectedCar.position = position
         viewDetailsState.postValue(selectedCar)
     }
 

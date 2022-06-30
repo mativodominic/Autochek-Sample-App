@@ -25,6 +25,7 @@ data class Car(
     val sold: Boolean,
     val transmission: String?
 ) : Serializable {
+    var position: Int = -1
     var memoryCacheKey: MemoryCache.Key? = null
     var isFavourite: Boolean = false
 }

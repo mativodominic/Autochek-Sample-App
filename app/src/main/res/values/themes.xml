@@ -1,11 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Autocheck" parent="Theme.MaterialComponents.Light.DarkActionBar">
-        <item name="android:windowActivityTransitions">true</item>
-
-        <!--Shared Element Transitions-->
-        <item name="android:windowSharedElementEnterTransition">@transition/change_image_transform</item>
-        <item name="android:windowSharedElementExitTransition">@transition/change_image_transform</item>
 
         <!-- Primary brand color, action bar bg -->
         <item name="colorPrimary">@color/auto_primary</item>

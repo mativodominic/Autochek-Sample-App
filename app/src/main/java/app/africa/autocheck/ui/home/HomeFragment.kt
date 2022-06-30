@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.commit
 import app.africa.autocheck.R
 import app.africa.autocheck.core.framework.data.AutoReloadState
 import app.africa.autocheck.core.framework.data.AutoState
@@ -90,7 +90,32 @@ class HomeFragment : BaseMvpFragment<HomeViewModel>(R.layout.home_fragment) {
         viewModel.viewDetailsState.observe(this) {
             val parent = parentFragment as MainFragment
             val hashmap = hashMapOf<String, View>()
-            parent.openCarDetails(it)
+
+            if (it.position != -1) {
+                val holder = binding.popularCarsList.layoutManager?.getChildAt(it.position)
+                val image = holder?.findViewById<ImageView>(R.id.carImage)
+                image?.let { imageView ->
+                    hashmap[imageView.transitionName] = imageView
+                }
+                val nameOfCar = holder?.findViewById<TextView>(R.id.nameOfCar)
+                nameOfCar?.let { name ->
+                    hashmap[name.transitionName] = name
+                }
+                val yearOfManufacture = holder?.findViewById<TextView>(R.id.yearOfManufacture)
+                yearOfManufacture?.let { year ->
+                    hashmap[year.transitionName] = year
+                }
+                val mileage = holder?.findViewById<TextView>(R.id.mileage)
+                mileage?.let { mileage_ ->
+                    hashmap[mileage_.transitionName] = mileage_
+                }
+                val ratingLevel = holder?.findViewById<TextView>(R.id.ratingLevel)
+                ratingLevel?.let { rating ->
+                    hashmap[rating.transitionName] = rating
+                }
+            }
+
+            parent.openCarDetails(it, hashmap)
         }
     }
 

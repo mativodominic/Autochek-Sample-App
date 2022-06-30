@@ -47,7 +47,6 @@ class CarListHolder(
             allowHardware(false)
             listener(
                 onSuccess = { _, result ->
-                    val mck = result.memoryCacheKey
                     Palette.Builder(result.drawable.toBitmap()).generate { palette ->
                         val context = binding.root.context
                         val bgColor = palette?.getDarkMutedColor(ContextCompat.getColor
