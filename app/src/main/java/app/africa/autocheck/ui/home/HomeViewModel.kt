@@ -105,7 +105,10 @@ class HomeViewModel: BaseViewModel(), HomeContract.ViewModel {
 
                 loadMoreCarsState.postValue(AutoState.Success)
             }
-            else loadMoreCarsState.postError(res)
+            else {
+                layoutPagination.isLoading = false
+                loadMoreCarsState.postError(res)
+            }
         }
     }
 
