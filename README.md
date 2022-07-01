@@ -4,13 +4,13 @@ technologies and tools that have been used.
 
 ## App Screenshots
 
-![Landing page image](pics/085500.png | width=200 "Landing Page")
+![Landing page image](pics/085500.png|width=200)
 
-![Car_details_page](pics/085501.png | width=200 "Car Details Page")
+![Car_details_page](pics/085501.png|width=200 "Car Details Page")
 
-![Car_details_page](pics/085502.png | width=200 "Car Details Page")
+![Car_details_page](pics/085502.png|width=200 "Car Details Page")
 
-![Car_media_page](pics/085503.png | width=200 "Car Media Page")
+![Car_media_page](pics/085503.png|width=200 "Car Media Page")
 
 ## Libraries
 Some of the libraries used in this application:
