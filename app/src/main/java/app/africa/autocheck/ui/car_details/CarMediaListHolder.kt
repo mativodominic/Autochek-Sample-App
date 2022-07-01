@@ -25,7 +25,7 @@ class CarMediaListHolder(
 
         binding.mediaImage.load(model.url) {
             crossfade(true)
-            allowHardware(true)
+            allowHardware(false)
             listener(
                 onSuccess = { _, result ->
                     Palette.Builder(result.drawable.toBitmap()).generate { palette ->

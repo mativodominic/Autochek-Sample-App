@@ -3,9 +3,11 @@ package app.africa.autocheck.ui.main
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.FragmentTransaction
+import androidx.transition.Fade
 import app.africa.autocheck.R
 import app.africa.autocheck.core.data.cars.Car
 import app.africa.autocheck.core.framework.ui.BaseFragment
+import app.africa.autocheck.core.framework.ui.DetailsTransition
 import app.africa.autocheck.core.framework.ui.viewBinding
 import app.africa.autocheck.databinding.ContentMainBinding
 import app.africa.autocheck.ui.car_details.CarDetailsFragment
@@ -77,7 +79,12 @@ class MainFragment : BaseFragment(R.layout.content_main) {
     }
 
     fun openCarDetails(car: Car, hashmap: HashMap<String, View>) {
-        replaceFragment(CarDetailsFragment.getInstance(car), R.id.contentMainContainer, true, hashmap)
+        val fragment = CarDetailsFragment.getInstance(car)
+        fragment.sharedElementEnterTransition = DetailsTransition()
+        fragment.enterTransition = Fade()
+        exitTransition = Fade()
+        fragment.sharedElementReturnTransition = DetailsTransition()
+        replaceFragment(fragment, R.id.contentMainContainer, true, hashmap)
     }
 
 }

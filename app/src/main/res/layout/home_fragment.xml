@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="0dp"
                 android:paddingEnd="16dp"
-                android:paddingBottom="48dp"
+                android:paddingBottom="56dp"
                 app:menu="@menu/cart_menu"
                 app:layout_collapseMode="parallax"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"

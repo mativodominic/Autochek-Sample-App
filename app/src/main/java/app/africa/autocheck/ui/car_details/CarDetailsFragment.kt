@@ -9,7 +9,6 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.core.os.bundleOf
 import androidx.palette.graphics.Palette
 import androidx.transition.Fade
-import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
 import app.africa.autocheck.R
 import app.africa.autocheck.core.data.cars.Car
@@ -152,8 +151,8 @@ class CarDetailsFragment : BaseMvpFragment<CarDetailsViewModel>(R.layout.car_det
             binding.carVideo.visibility = View.GONE
             binding.carImage.load(media.url) {
                 crossfade(true)
-
                 allowHardware(false)
+
                 listener(
                     onSuccess = { _, result ->
                         Palette.Builder(result.drawable.toBitmap()).generate { palette ->
@@ -193,9 +192,6 @@ class CarDetailsFragment : BaseMvpFragment<CarDetailsViewModel>(R.layout.car_det
         arguments?.let { b ->
             if (b.containsKey(EXTRA_MODEL)) carModel = b.getSerializable(EXTRA_MODEL) as Car
         }
-
-        sharedElementEnterTransition = TransitionInflater.from(requireContext())
-            .inflateTransition(R.transition.change_image_transform)
 
     }
 
@@ -254,28 +250,32 @@ class CarDetailsFragment : BaseMvpFragment<CarDetailsViewModel>(R.layout.car_det
         binding.carImage.load(carModel.imageUrl) {
             if (carModel.memoryCacheKey != null) placeholderMemoryCacheKey(carModel.memoryCacheKey)
             crossfade(true)
-            allowHardware(true)
+            allowHardware(false)
             listener(
                 onSuccess = { _, result ->
-                    Palette.Builder(result.drawable.toBitmap()).generate { palette ->
-                        val context = binding.root.context
-                        val bgColor = palette?.getDarkVibrantColor(
-                            ContextCompat.getColor(
-                                context, R
-                                    .color.featured_car_bg
-                            )
-                        )
-                        if (bgColor != null) {
-                            binding.carImage.setBackgroundColor(bgColor)
-                        }
 
+                    Palette.Builder(result.drawable.toBitmap()).generate { palette ->
+                        try {
+                            val context = binding.root.context
+                            val bgColor = palette?.getDarkVibrantColor(
+                                ContextCompat.getColor(
+                                    context, R
+                                        .color.featured_car_bg
+                                )
+                            )
+                            if (bgColor != null) {
+                                binding.carImage.setBackgroundColor(bgColor)
+                            }
+                        } catch (ex: Exception) {
+                            ex.printStackTrace()
+                        }
                         startPostponedEnterTransition()
                     }
                 }
             )
         }
     }
-
+    
     private fun setIsFavourite() {
         binding.favouriteIcon.setImageResource(
             if (carModel.isFavourite) R.drawable.favourite_active

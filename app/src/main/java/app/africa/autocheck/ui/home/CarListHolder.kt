@@ -43,7 +43,6 @@ class CarListHolder(
 
         binding.carImage.load(model.imageUrl) {
             crossfade(true)
-
             allowHardware(false)
             listener(
                 onSuccess = { _, result ->

@@ -114,7 +114,7 @@ class PhotoDetailActivity : BaseMvpActivity(R.layout.activity_photo_detail) {
         private fun loadImage(imageItem: ImageView, container: ViewGroup, position: Int) {
             imageItem.load(urls[position]) {
                 crossfade(true)
-                allowHardware(true)
+                allowHardware(false)
 
                 listener(
                     onError = { _, result ->

@@ -23,7 +23,7 @@ class PopularMakeListHolder(
         binding.makeImage.load(model.imageUrl) {
             placeholder(R.drawable.ic_placeholder)
             crossfade(true)
-            allowHardware(true)
+            allowHardware(false)
 
             listener(
                 onSuccess = { _, result ->
